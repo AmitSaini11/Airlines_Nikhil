@@ -1,0 +1,9 @@
+{
+	"name": "AirlinesDataFactory",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "9801d810-2d3c-4c46-a737-cddd5ccfae25",
+		"tenantId": "bb7e08be-cd9c-4b51-bc29-6278e56afcdc"
+	}
+}
