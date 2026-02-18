@@ -1,0 +1,48 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "projectdatafactory1217"
+		},
+		"Adls_linked_Service_accountKey": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"SqlServer1_password": {
+			"value": ""
+		},
+		"Adls_linked_Service_properties_typeProperties_url": {
+			"value": "https://sainistorage1.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://airlineskeyvault.vault.azure.net/"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "amitserver.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "amitdb"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "amitserver"
+		},
+		"SqlServer1_properties_typeProperties_server": {
+			"value": "15425-AMIT "
+		},
+		"SqlServer1_properties_typeProperties_database": {
+			"value": "Ankit_db"
+		},
+		"SqlServer1_properties_typeProperties_userName": {
+			"value": "TEAMCOMPUTERS\\15425"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
