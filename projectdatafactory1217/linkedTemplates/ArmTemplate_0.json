@@ -355,7 +355,7 @@
 							"source": {
 								"type": "SqlServerSource",
 								"sqlReaderQuery": {
-									"value": "select * from incremental_tb where last_updated > '@{activity('targetlookup').output.firstRow.last_record}' and last_updated<= '@{activity('watermrk_lookup').output.firstRow.last_watermark}';",
+									"value": "select * from incremental_tb where last_updated > '@{activity('targetlookup').output.firstRow.last_record}' and last_updated <= '@{activity('watermrk_lookup').output.firstRow.last_watermark}';",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -365,7 +365,6 @@
 								"type": "AzureSqlSink",
 								"writeBehavior": "insert",
 								"sqlWriterUseTableLock": false,
-								"tableOption": "autoCreate",
 								"disableMetricsCollection": false
 							},
 							"enableStaging": false,
