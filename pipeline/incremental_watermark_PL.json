@@ -5,9 +5,20 @@
 			{
 				"name": "Copy data1",
 				"type": "Copy",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "targetlookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "watermrk_lookup",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -19,6 +30,10 @@
 				"typeProperties": {
 					"source": {
 						"type": "SqlServerSource",
+						"sqlReaderQuery": {
+							"value": "select * from incremental_tb where last_updated > '@{activity('targetlookup').output.firstRow.last_record}' and last_updated<= '@{activity('watermrk_lookup').output.firstRow.last_watermark}';",
+							"type": "Expression"
+						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
@@ -55,8 +70,6 @@
 			{
 				"name": "targetlookup",
 				"type": "Lookup",
-				"state": "Inactive",
-				"onInactiveMarkAs": "Succeeded",
 				"dependsOn": [],
 				"policy": {
 					"timeout": "0.12:00:00",
@@ -68,13 +81,13 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "SqlServerSource",
-						"sqlReaderQuery": "select max(last_updated) as last_record from [dbo].[incremental_tb];",
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": "select max(last_updated) as last_record from incremental_tb;",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
 					"dataset": {
-						"referenceName": "Sqlserver_tb",
+						"referenceName": "AzureSqlTable",
 						"type": "DatasetReference"
 					}
 				}

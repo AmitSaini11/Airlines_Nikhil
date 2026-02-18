@@ -36,7 +36,7 @@
 		],
 		"typeProperties": {
 			"schema": "dbo",
-			"table": "watermark_tb"
+			"table": "incremental_tb"
 		}
 	}
 }
