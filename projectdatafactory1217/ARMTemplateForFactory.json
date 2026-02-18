@@ -85,7 +85,7 @@
 							"source": {
 								"type": "SqlServerSource",
 								"sqlReaderQuery": {
-									"value": "select * from incremental_tb where last_updated > @activity('Lookup1').output.firstRow.lst_update",
+									"value": "select * from incremental_tb where last_updated > '@{activity('Lookup1').output.firstRow.lst_updt}'",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
