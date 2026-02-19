@@ -15,7 +15,7 @@
 			"value": ""
 		},
 		"Adls_linked_Service_properties_typeProperties_url": {
-			"value": "https://sainistorage1.dfs.core.windows.net/"
+			"value": "https://storagegen213.dfs.core.windows.net/"
 		},
 		"AzureKeyVault1_properties_typeProperties_baseUrl": {
 			"value": "https://airlineskeyvault.vault.azure.net/"
