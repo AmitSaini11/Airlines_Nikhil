@@ -1,0 +1,156 @@
+{
+	"name": "CSVDataSetSouce",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Adls_linked_Service",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"File_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().File_name",
+					"type": "Expression"
+				},
+				"fileSystem": "source"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "MaterialNumber",
+				"type": "String"
+			},
+			{
+				"name": "Plant",
+				"type": "String"
+			},
+			{
+				"name": "StorageLocation",
+				"type": "String"
+			},
+			{
+				"name": "SalesOrder",
+				"type": "String"
+			},
+			{
+				"name": "MaterialDescription",
+				"type": "String"
+			},
+			{
+				"name": "ValuatedUnrestricted-UseStock",
+				"type": "String"
+			},
+			{
+				"name": "BaseUnitofMeasure",
+				"type": "String"
+			},
+			{
+				"name": "ValueofTotalValuatedStock",
+				"type": "String"
+			},
+			{
+				"name": "Currency",
+				"type": "String"
+			},
+			{
+				"name": "StockInQualityInspection",
+				"type": "String"
+			},
+			{
+				"name": "ValueInQualInsp",
+				"type": "String"
+			},
+			{
+				"name": "BlockedStock",
+				"type": "String"
+			},
+			{
+				"name": "ValueBlockedStock",
+				"type": "String"
+			},
+			{
+				"name": "TotalStockofAllRestrictedBatches",
+				"type": "String"
+			},
+			{
+				"name": "ValueRestricted",
+				"type": "String"
+			},
+			{
+				"name": "BlockedStockReturns",
+				"type": "String"
+			},
+			{
+				"name": "ValueRetsBlocked",
+				"type": "String"
+			},
+			{
+				"name": "StockInTransfer",
+				"type": "String"
+			},
+			{
+				"name": "ValueInTransTfr",
+				"type": "String"
+			},
+			{
+				"name": "TiedEmptiesStock",
+				"type": "String"
+			},
+			{
+				"name": "ValueTiedEmpties",
+				"type": "String"
+			},
+			{
+				"name": "Stock in Transit",
+				"type": "String"
+			},
+			{
+				"name": "Value in Transit",
+				"type": "String"
+			},
+			{
+				"name": "ValuedGoodsReceiptBlockedStock",
+				"type": "String"
+			},
+			{
+				"name": "ValueGRBlockedSt.",
+				"type": "String"
+			},
+			{
+				"name": "CAT1",
+				"type": "String"
+			},
+			{
+				"name": "CAT2",
+				"type": "String"
+			},
+			{
+				"name": "CAT3",
+				"type": "String"
+			},
+			{
+				"name": "MATCAT",
+				"type": "String"
+			},
+			{
+				"name": "DESCRIPTION",
+				"type": "String"
+			},
+			{
+				"name": "REFDATE",
+				"type": "String"
+			}
+		]
+	}
+}

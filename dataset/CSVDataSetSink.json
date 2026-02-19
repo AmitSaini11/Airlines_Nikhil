@@ -1,0 +1,31 @@
+{
+	"name": "CSVDataSetSink",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Adls_linked_Service",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"File_name": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": {
+					"value": "@dataset().File_name",
+					"type": "Expression"
+				},
+				"fileSystem": "sink"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
