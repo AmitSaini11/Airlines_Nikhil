@@ -341,7 +341,7 @@
 							"source": {
 								"type": "SqlServerSource",
 								"sqlReaderQuery": {
-									"value": "select * from incremental_tb where last_updated > '@{activity('targetlookup').output.firstRow.last_record}' and last_updated <= '@{activity('watermrk_lookup').output.firstRow.last_watermark}';",
+									"value": "select ,* from incremental_tb where last_updated > '@{activity('targetlookup').output.firstRow.last_record}' and last_updated <= '@{activity('watermrk_lookup').output.firstRow.last_watermark}';",
 									"type": "Expression"
 								},
 								"queryTimeout": "02:00:00",
@@ -427,6 +427,64 @@
 								"referenceName": "Sqlserver_tb",
 								"type": "DatasetReference",
 								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "success",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-24.centralindia.logic.azure.com:443/workflows/72df48fd77224ce58a31dbf24945f1bb/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=tlX8X1NhBcBwuIPlGTx5WCg0oU6tWmpN64ltnpJa-nU",
+							"body": {
+								"value": "{\n    \"Status\"         : \"Completed\",\n    \"PLName\"         : \"@{pipeline().Pipeline}\",\n    \"PLExecutionTime\": \"@{pipeline().TriggerTime}\"\n}",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Web2",
+						"type": "WebActivity",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Failed"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"method": "POST",
+							"headers": {},
+							"url": "https://prod-24.centralindia.logic.azure.com:443/workflows/72df48fd77224ce58a31dbf24945f1bb/triggers/When_an_HTTP_request_is_received/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2FWhen_an_HTTP_request_is_received%2Frun&sv=1.0&sig=tlX8X1NhBcBwuIPlGTx5WCg0oU6tWmpN64ltnpJa-nU",
+							"body": {
+								"value": "{\n    \"Status\"         : \"Failed\",\n    \"PLName\"         : \"@{pipeline().Pipeline}\",\n    \"PLExecutionTime\": \"@{pipeline().TriggerTime}\"\n\n\n}",
+								"type": "Expression"
 							}
 						}
 					}
