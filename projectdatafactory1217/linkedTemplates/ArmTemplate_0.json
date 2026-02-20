@@ -983,6 +983,8 @@
 					{
 						"name": "success",
 						"type": "WebActivity",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Copy data1",
@@ -1012,6 +1014,8 @@
 					{
 						"name": "Web2",
 						"type": "WebActivity",
+						"state": "Inactive",
+						"onInactiveMarkAs": "Succeeded",
 						"dependsOn": [
 							{
 								"activity": "Copy data1",
@@ -1202,7 +1206,7 @@
 					"recurrence": {
 						"frequency": "Minute",
 						"interval": 20,
-						"startTime": "2026-02-20T11:48:00",
+						"startTime": "2026-02-20T11:56:00",
 						"timeZone": "India Standard Time"
 					}
 				}
